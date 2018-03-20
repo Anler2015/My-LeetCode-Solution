@@ -1,0 +1,22 @@
+
+def dfs(sub,nums,startindex,res):
+		res.append(sub[:])
+		for i in range(startindex,len(nums)):
+				sub.append(nums[i])            
+				if res.count(sub) == 0:             # 78题加了一个判断条件
+					dfs(sub,nums,i+1,res)
+				sub.pop()
+
+
+
+class Solution:
+	def subsetsWithDup(self, nums):
+		"""
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+		nums.sort()
+		res=[]
+		dfs([],nums,0,res)
+		print(res)
+		return res
