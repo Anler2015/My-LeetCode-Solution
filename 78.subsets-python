@@ -1,0 +1,16 @@
+class Solution:
+    # @param S, a list of integer
+    # @return a list of lists of integer
+	def subsets(self, S):
+		if S == []:
+			return []
+
+		S.sort() #sort the array to avoid descending list of int
+		res=[[]]
+		for element in S:
+			temp = []
+			for ans in res:
+        		 #append the new int to each existing list
+				temp.append(ans+[element])
+			res += temp
+		return res
