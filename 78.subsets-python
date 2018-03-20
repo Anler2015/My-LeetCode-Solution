@@ -14,3 +14,20 @@ class Solution:
 				temp.append(ans+[element])
 			res += temp
 		return res
+
+====================================================================================
+def dfs(sub,nums,startindex,res):                     # 深度优先算法
+		res.append(sub[:])
+		for i in range(startindex,len(nums)):
+			sub.append(nums[i])
+			dfs(sub,nums,i+1,res)
+			sub.pop()
+
+class Solution:
+    # @param S, a list of integer
+    # @return a list of lists of integer
+	def subsets(self, nums):
+		nums.sort()
+		res=[]
+		dfs([],nums,0,res)
+		return res
