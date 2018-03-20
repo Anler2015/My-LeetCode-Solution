@@ -20,3 +20,25 @@ class Solution:
 	dfs([],nums,0,res)
 	print(res)
 	return res
+	
+	
+	
+	-----------------------------------------------------
+class Solution:
+	def subsetsWithDup(self, nums):
+	"""
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+	nums.sort()
+	res=[[]]
+	for num in nums:
+		temp = []
+		for ans in res:
+			temp.append(ans+ [num])
+
+		for x in temp:
+			if res.count(x) ==0:
+				res+=[x]
+
+	return res
