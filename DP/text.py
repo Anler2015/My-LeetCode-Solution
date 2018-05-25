@@ -1,0 +1,39 @@
+class Solution:
+    def maxSubArray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        size = len(nums)
+        #当前位置最大的sum
+        dp = []
+
+        #初始化状态
+        for i in range(size):
+            dp.append(nums[i])  
+            pass
+
+        #关系方程
+        for i in range(size):
+
+            for j in range(i+1):
+                temp = 0
+                for x in range(j+1,i+1):
+                    temp = temp+nums[x]
+                dp[i] = max(dp[i],dp[j]+temp)
+
+            print(dp[i])
+
+
+        #answer
+        res = min(nums)
+        for m in range(size):
+            res= max(res,dp[m])
+        return res
+        
+
+
+  
+
+a= Solution()
+print(a.maxSubArray([-2,1,-3,4,-1,2,1,-5,4]))
